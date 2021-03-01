@@ -3,11 +3,11 @@ import csv
 
 client = MongoClient('mongodb+srv://test:test@opisopshop.aalnc.mongodb.net/test?authSource=admin&replicaSet=atlas-lr7h7d-shard-0'
     '&readPreference=primary&appname=MongoDB%20Compass&ssl=true')
-database = client.huwebshop
+database = client.OpOpShop
 
-products = database.products.find()
-sessions = database.sessions.find()
-profiles = database.profiles.find()
+products = database.prod_small.find()
+sessions = database.ses_small.find()
+profiles = database.prof_small.find()
 
 def multi_getattr(obj, attr, default = None):
     """
@@ -39,7 +39,7 @@ def generateCSV(fileNameString, category, fieldnames, values):
                     _id = multi_getattr(record,values[0],'')
                     if _id != '':
                         dashIndex = str(_id).find('-')
-                        if dashIndex is not -1:
+                        if dashIndex != -1:
                             writeDict.update({fieldnames[x]: _id[:dashIndex] })
                         else:
                             try:
