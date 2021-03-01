@@ -35,42 +35,42 @@ cursor.execute(
             """DROP TABLE IF EXISTS products CASCADE;
                 CREATE TABLE IF NOT EXISTS 
                 products
-                 (ID varchar(255) NOT NULL,
+                 (_id varchar(255) NOT NULL,
                   categories_id varchar(255) NOT NULL,
                    brands_id varchar(255) NOT NULL,
                     name varchar(255),
                      description varchar(9000),
                       price int4, discount int4,
                        inhoud varchar(255),
-                        PRIMARY KEY (ID))"""
+                        PRIMARY KEY (_id))"""
 )
 
 cursor.execute(
             """DROP TABLE IF EXISTS profiles CASCADE;
                 CREATE TABLE IF NOT EXISTS profiles (
-                    id INT NOT NULL ,
-            PRIMARY KEY (id) );
+                    _id INT NOT NULL ,
+            PRIMARY KEY (_id) );
 """
 )
 cursor.execute(
             """DROP TABLE IF EXISTS orders CASCADE;
                 CREATE TABLE IF NOT EXISTS orders
-                 (session_id varchar(255) NOT NULL,
-                  product_id varchar(255) NOT NULL,
+                 (sessions_id varchar(255) NOT NULL,
+                  products_id varchar(255) NOT NULL,
                    count int4,
-                    PRIMARY KEY (session_id, product_id));
+                    PRIMARY KEY (sessions_id, products_id));
 """)
 
 cursor.execute(
             """DROP TABLE IF EXISTS sessions CASCADE;
                 CREATE TABLE IF NOT EXISTS
                  sessions
-                  (ID varchar(255) NOT NULL,
+                  (_id varchar(255) NOT NULL,
                    profiles_id varchar(255) NOT NULL,
                     segment varchar(255),
                      session_start timestamp,
                       session_end timestamp,
-                       PRIMARY KEY (ID));
+                       PRIMARY KEY (_id));
 
 """
 )
@@ -80,4 +80,4 @@ cursor.execute(
 connection.commit()
 cursor.close()
 connection.close()
-print("PostgreSQL datebase is made")
+print("PostgreSQL datebase is (re)created")
