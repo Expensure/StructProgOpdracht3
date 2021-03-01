@@ -12,8 +12,8 @@ profiles = database.profiles.find()
 def multi_getattr(obj, attr, default = None):
     """
     http://code.activestate.com/recipes/577346-getattr-with-arbitrary-depth/
-    Source
-    Changed it a tiny bit
+    Main Source
+    Was slightly edited
     """
     attributes = attr.split(".")
     for i in attributes:
@@ -69,6 +69,3 @@ generateCSV('sessions.csv', sessions,
 generateCSV('profiles.csv', profiles,
             ['id','order_amount', 'browser_id'],
             ['xoxo', 'order.count',"buids"])
-
-#           BRONVERMELDING
-#   Dit is de code die gebruikt is tijdens de les van 5 maart met Nick.
