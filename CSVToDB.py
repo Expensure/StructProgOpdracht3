@@ -11,14 +11,20 @@ def writeBrands():
     with open('products.csv', 'r', encoding='utf8') as f:
         reader = csv.reader(f)
         next(reader)
+        list_of_brands = []
         for row in reader:
+            if row[6] not in list_of_brands:
+                list_of_brands.append(row[6])
 
-            cursor.execute(
-                """ 
-                INSERT INTO brands (brand) 
-                VALUES (%s) ON CONFLICT (brand) DO NOTHING
-                """,
-                (row[0]))
+        for row
+        for i in list_of_brands:
+            for i in row:
+
+        print(len(list_of_brands))
+        for
+        for i in list_of_brands:
+            row.append(list_of_brands.index(i))
+            print(row)
 def writeProducts():
     with open('products.csv', 'r', encoding='utf8') as f:
         reader = csv.reader(f)
@@ -32,6 +38,7 @@ def writeProducts():
                 (row[0], row[1]))
 
 writeProducts()
+writeBrands()
 connection.commit()
 cursor.close()
 connection.close()
