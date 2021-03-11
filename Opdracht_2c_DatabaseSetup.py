@@ -15,19 +15,19 @@ cursor.execute(
             """DROP TABLE IF EXISTS brands CASCADE;
             CREATE  TABLE IF NOT EXISTS 
             brands 
-            (ID varchar(255),
+            (_id varchar(255),
              brand varchar(255),
-              PRIMARY KEY (ID))"""
+              PRIMARY KEY (_id))"""
 )
 cursor.execute(
             """DROP TABLE IF EXISTS categories CASCADE;
             CREATE  TABLE IF NOT EXISTS 
             categories
-             (ID varchar(255),
-              category_1 varchar(255),
-               category_2 varchar(255),
-                category_3 varchar(255),
-                 PRIMARY KEY (ID));"""
+             (_id varchar(999),
+              category_1 varchar(999),
+               category_2 varchar(999),
+                category_3 varchar(999),
+                 PRIMARY KEY (_id));"""
 )
 
 

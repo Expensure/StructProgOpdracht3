@@ -64,8 +64,8 @@ generateCSV('products.csv', products,
             ['id', 'name', 'gender', 'category', 'subcategory', 'subsubcategory', 'brand'],
             ["_id", "name", "gender", "category", "sub_category", "sub_sub_category", "brand"])
 generateCSV('sessions.csv', sessions,
-            ['id', 'segment','orders'],
-            ['buid.0', 'segment','order.products'])
+            ['id', 'device', 'segment','orders'],
+            ['buid.0', 'user_agent.device.model', 'segment','order.products'])
 generateCSV('profiles.csv', profiles,
             ['id','order_amount', 'browser_id'],
-            ['xoxo', 'order.count',"buids"])
+            ['_id', 'order.count',"buids"])
