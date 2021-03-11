@@ -13,13 +13,18 @@ def writeProducts():
         reader = csv.reader(f)
         next(reader)
         for row in reader:
+            print(row)
+            cursor.execute("SELECT brands._id FROM brands WHERE brand = %s ", (row[4],))
+            brand_id = cursor.fetchone()
+            cursor.execute("SELECT categories._id FROM categories ")
+            category_id = cursor.fetchone()
+            print(brand_id)
             cursor.execute(
                 """ 
-                INSERT INTO products (_id,name) 
-                VALUES (%s,%s) ON CONFLICT (_id) DO NOTHING
+                INSERT INTO products (id,name,gender,category_id,brand_id) 
+                VALUES (%s,%s,%s,%s,%s) ON CONFLICT (id) DO NOTHING
                 """,
-                (row[0], row[1]))
-
+                (row[0], row[1], row[2], category_id[0], brand_id[0]))
 def writeSessions():
     with open('sessions.csv', 'r', encoding='utf8') as f:
         reader = csv.reader(f)

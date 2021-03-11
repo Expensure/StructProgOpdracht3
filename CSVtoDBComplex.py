@@ -31,6 +31,12 @@ def writeCategories():
                 VALUES (%s,%s,%s,%s) ON CONFLICT (_id) DO NOTHING
                 """,
                 (row[7], row[3],row[4],row[5]))
+            cursor.execute(
+                """ 
+                INSERT INTO products (categories_id)
+                VALUES (%s) 
+                """,
+                (row[7]))
 
 
 def writeBrands():
