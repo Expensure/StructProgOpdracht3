@@ -15,7 +15,7 @@ cursor.execute(
             """DROP TABLE IF EXISTS brands CASCADE;
             CREATE  TABLE IF NOT EXISTS 
             brands 
-            (ID varchar(255)NOT NULL,
+            (ID varchar(255),
              brand varchar(255),
               PRIMARY KEY (ID))"""
 )
@@ -23,7 +23,7 @@ cursor.execute(
             """DROP TABLE IF EXISTS categories CASCADE;
             CREATE  TABLE IF NOT EXISTS 
             categories
-             (ID varchar(255) NOT NULL,
+             (ID varchar(255),
               category_1 varchar(255),
                category_2 varchar(255),
                 category_3 varchar(255),
@@ -35,9 +35,9 @@ cursor.execute(
             """DROP TABLE IF EXISTS products CASCADE;
                 CREATE TABLE IF NOT EXISTS 
                 products
-                 (_id varchar(255) NOT NULL,
-                  categories_id varchar(255) NOT NULL,
-                   brands_id varchar(255) NOT NULL,
+                 (_id varchar(255),
+                  categories_id varchar(255),
+                   brands_id varchar(255),
                     name varchar(255),
                      description varchar(9000),
                       price int4, discount int4,
@@ -55,8 +55,8 @@ cursor.execute(
 cursor.execute(
             """DROP TABLE IF EXISTS orders CASCADE;
                 CREATE TABLE IF NOT EXISTS orders
-                 (sessions_id varchar(255) NOT NULL,
-                  products_id varchar(255) NOT NULL,
+                 (sessions_id varchar(255),
+                  products_id varchar(255),
                    count int4,
                     PRIMARY KEY (sessions_id, products_id));
 """)
@@ -65,8 +65,8 @@ cursor.execute(
             """DROP TABLE IF EXISTS sessions CASCADE;
                 CREATE TABLE IF NOT EXISTS
                  sessions
-                  (_id varchar(255) NOT NULL,
-                   profiles_id varchar(255) NOT NULL,
+                  (_id varchar(255),
+                   profiles_id varchar(255),
                     segment varchar(255),
                      session_start timestamp,
                       session_end timestamp,
