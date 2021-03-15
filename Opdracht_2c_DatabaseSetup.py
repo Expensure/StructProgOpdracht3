@@ -38,17 +38,20 @@ cursor.execute(
                  (_id varchar(255),
                   categories_id varchar(255),
                    brands_id varchar(255),
-                    name varchar(255),
-                     description varchar(9000),
-                      price int4, discount int4,
-                       inhoud varchar(255),
-                        PRIMARY KEY (_id))"""
+                    gender varchar(255),
+                     name varchar(255),
+                      description varchar(9000),
+                       price int4, discount int4,
+                        inhoud varchar(255),
+                         PRIMARY KEY (_id))"""
 )
 
 cursor.execute(
             """DROP TABLE IF EXISTS profiles CASCADE;
                 CREATE TABLE IF NOT EXISTS profiles (
-                    _id INT NOT NULL ,
+                    _id varchar(255) ,
+                    order_amount varchar(255),
+                    
             PRIMARY KEY (_id) );
 """
 )
@@ -66,11 +69,13 @@ cursor.execute(
                 CREATE TABLE IF NOT EXISTS
                  sessions
                   (_id varchar(255),
-                   profiles_id varchar(255),
-                    segment varchar(255),
-                     session_start timestamp,
-                      session_end timestamp,
-                       PRIMARY KEY (_id));
+                    browser_id varchar(255),
+                     profiles_id varchar(255),
+                      segment varchar(255),
+                       session_start timestamp,
+                        session_end timestamp,
+                         orders varchar(255),
+                         PRIMARY KEY (_id));
 
 """
 )

@@ -67,5 +67,5 @@ generateCSV('sessions.csv', sessions,
             ['id', 'device', 'segment','orders'],
             ['buid.0', 'user_agent.device.model', 'segment','order.products'])
 generateCSV('profiles.csv', profiles,
-            ['id','order_amount', 'browser_id'],
+            ['_id','order_amount', 'browser_id'],
             ['_id', 'order.count',"buids"])
