@@ -57,8 +57,7 @@ cursor.execute(
                 CREATE TABLE IF NOT EXISTS orders
                  (sessions_id varchar(255),
                   products_id varchar(255),
-                   count int4,
-                    PRIMARY KEY (sessions_id, products_id));
+                   count int4);
 """)
 
 cursor.execute(
