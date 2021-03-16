@@ -61,8 +61,8 @@ def generateCSV(fileNameString, category, fieldnames, values):
 
 
 generateCSV('products.csv', products,
-            ['id', 'name', 'gender', 'category', 'subcategory', 'subsubcategory', 'brand'],
-            ["_id", "name", "gender", "category", "sub_category", "sub_sub_category", "brand"])
+            ['id', 'name', 'price', 'category', 'subcategory', 'subsubcategory', 'brand'],
+            ["_id", "name", "price", "category", "sub_category", "sub_sub_category", "brand"])
 generateCSV('sessions.csv', sessions,
             ['id', 'device', 'segment','orders'],
             ['buid.0', 'user_agent.device.model', 'segment','order.products'])

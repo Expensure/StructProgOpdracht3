@@ -38,7 +38,7 @@ cursor.execute(
                  (_id varchar(255),
                   categories_id varchar(255),
                    brands_id varchar(255),
-                    gender varchar(255),
+                    price int4,
                      name varchar(255),
                          PRIMARY KEY (_id))"""
 )

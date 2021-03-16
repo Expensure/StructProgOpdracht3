@@ -35,9 +35,14 @@ def writeProductsBrandsCategories():
         reader = csv.reader(f)
         next(reader)
         for row in reader:
+            #Price
+            priceinalist = (list((ast.literal_eval(row[2])).values()))
+            price = priceinalist[0]/100
+            #Brands
             for i in list_of_brands:
                 if row[6] == i:
                     brand_id = (str(list_of_brands.index(i)))
+            #Categories
             checkme = row3reader(row)
             for i in list_of_combinations:
                 if checkme == i:
@@ -45,9 +50,9 @@ def writeProductsBrandsCategories():
             categorie, subcategorie, subsubcategorie = checkme[0], checkme[1], checkme[2]
             cursor.execute(
                 """ 
-                INSERT INTO products (_id,name,gender,categories_id,brands_id) 
+                INSERT INTO products (_id,name,price,categories_id,brands_id) 
                 VALUES (%s,%s,%s,%s,%s) ON CONFLICT (_id) DO NOTHING""",
-                (row[0], row[1], row[2], brand_id, categorie_id))
+                (row[0], row[1], price, brand_id, categorie_id))
             cursor.execute(
                 """ 
                 INSERT INTO brands (_id,brand) 
