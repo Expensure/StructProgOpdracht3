@@ -40,9 +40,6 @@ cursor.execute(
                    brands_id varchar(255),
                     gender varchar(255),
                      name varchar(255),
-                      description varchar(9000),
-                       price int4, discount int4,
-                        inhoud varchar(255),
                          PRIMARY KEY (_id))"""
 )
 

@@ -9,6 +9,7 @@ connection = psycopg2.connect(user="postgres",
                               database="OpOpShop")
 cursor = connection.cursor()
 
+
 def writeProductsBrandsCategories():
     def row3reader(input):
         dicto = ast.literal_eval(input[3])
@@ -18,7 +19,6 @@ def writeProductsBrandsCategories():
         if len(newlist) == 2:
             newlist.append('')
         return newlist
-
 
     with open('products.csv', 'r', encoding='utf8') as f:
         reader = csv.reader(f)
@@ -37,28 +37,30 @@ def writeProductsBrandsCategories():
         for row in reader:
             for i in list_of_brands:
                 if row[6] == i:
-                    a = (str(list_of_brands.index(i)))
+                    brand_id = (str(list_of_brands.index(i)))
             checkme = row3reader(row)
             for i in list_of_combinations:
                 if checkme == i:
-                    b = str(list_of_combinations.index(i))
-            c, d, e = checkme[0], checkme[1], checkme[2]
+                    categorie_id = str(list_of_combinations.index(i))
+            categorie, subcategorie, subsubcategorie = checkme[0], checkme[1], checkme[2]
             cursor.execute(
                 """ 
                 INSERT INTO products (_id,name,gender,categories_id,brands_id) 
                 VALUES (%s,%s,%s,%s,%s) ON CONFLICT (_id) DO NOTHING""",
-                (row[0], row[1], row[2],a,b))
+                (row[0], row[1], row[2], brand_id, categorie_id))
             cursor.execute(
                 """ 
                 INSERT INTO brands (_id,brand) 
                 VALUES (%s,%s) ON CONFLICT (_id) DO NOTHING""",
-                (a,row[6]))
+                (brand_id, row[6]))
             cursor.execute(
                 """
                 INSERT INTO categories (_id, category_1, category_2, category_3)
                 VALUES (%s,%s,%s,%s) ON CONFLICT (_id) DO NOTHING
                  """,
-                (b, c, d, e))
+                (categorie_id, categorie, subcategorie, subsubcategorie))
+
+
 def writeSessions():
     with open('sessions.csv', 'r', encoding='utf8') as f:
         reader = csv.reader(f)
@@ -69,15 +71,15 @@ def writeSessions():
                 (row[0], row[1], row[2], row[3]))
 
 
-
 def writeProfiles():
     with open('profiles.csv', 'r', encoding='utf8') as f:
         reader = csv.reader(f)
         for row in reader:
             cursor.execute(
                 """INSERT INTO profiles (_id,order_amount)
-                 VALUES (%s,%s) ON CONFLICT(_id) DO NOTHING""",(
+                 VALUES (%s,%s) ON CONFLICT(_id) DO NOTHING""", (
                     row[0], row[1]))
+
 
 writeProductsBrandsCategories()
 writeSessions()
@@ -86,5 +88,3 @@ connection.commit()
 cursor.close()
 connection.close()
 print("Data imported.")
-
-
