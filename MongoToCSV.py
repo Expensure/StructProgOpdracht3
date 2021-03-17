@@ -33,27 +33,27 @@ def generateCSV(fileNameString, category, fieldnames, values):
         writer.writeheader()
         c = 0
         for record in category:
-            writeDict = {}
+            write_dict = {}
             for x in range(len(fieldnames)):
                 if x == 0:
                     _id = multi_getattr(record,values[0],'')
                     if _id != '':
-                        dashIndex = str(_id).find('-')
-                        if dashIndex != -1:
-                            writeDict.update({fieldnames[x]: _id[:dashIndex] })
+                        dash_index = str(_id).find('-')
+                        if dash_index != -1:
+                            write_dict.update({fieldnames[x]: _id[:dash_index] })
                         else:
                             try:
                                 if fileNameString != 'sessions.csv':
                                     int(record[values[0]])
-                                writeDict.update({fieldnames[x]: _id })
+                                write_dict.update({fieldnames[x]: _id })
                             except:
                                 pass
                     else:
-                        writeDict.update({fieldnames[x]: c })
+                        write_dict.update({fieldnames[x]: c })
                 else:
-                    writeDict.update({fieldnames[x]: multi_getattr(record, values[x])})
-                    x +=1
-            writer.writerow(writeDict)
+                    write_dict.update({fieldnames[x]: multi_getattr(record, values[x])})
+                    x += 1
+            writer.writerow(write_dict)
             c += 1
             if c % 10000 == 0:
                 print("{} product records written...".format(c))
