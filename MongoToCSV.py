@@ -5,7 +5,7 @@ client = MongoClient('mongodb+srv://test:test@opisopshop.aalnc.mongodb.net/test?
     '&readPreference=primary&appname=MongoDB%20Compass&ssl=true')
 database = client.OpOpShop
 
-products = database.prod_small.find()
+products = database.products.find()
 sessions = database.ses_small.find()
 profiles = database.prof_small.find()
 
@@ -67,5 +67,5 @@ generateCSV('sessions.csv', sessions,
             ['id', 'device', 'segment','orders'],
             ['buid.0', 'user_agent.device.model', 'segment','order.products'])
 generateCSV('profiles.csv', profiles,
-            ['_id','order_amount', 'browser_id'],
-            ['_id', 'order.count',"buids"])
+            ['_id','orders', 'buid'],
+            ['_id', 'order.ids',"buids.0"])

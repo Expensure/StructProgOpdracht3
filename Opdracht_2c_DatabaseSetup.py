@@ -46,20 +46,12 @@ cursor.execute(
 cursor.execute(
             """DROP TABLE IF EXISTS profiles CASCADE;
                 CREATE TABLE IF NOT EXISTS profiles (
-                    _id varchar(255) ,
-                    order_amount varchar(255),
+                    buids varchar(9999) ,
+                    orders varchar(9999),
                     
-            PRIMARY KEY (_id) );
+            PRIMARY KEY (buids) );
 """
 )
-cursor.execute(
-            """DROP TABLE IF EXISTS orders CASCADE;
-                CREATE TABLE IF NOT EXISTS orders
-                 (sessions_id varchar(255),
-                  products_id varchar(255),
-                   count int4);
-""")
-
 cursor.execute(
             """DROP TABLE IF EXISTS sessions CASCADE;
                 CREATE TABLE IF NOT EXISTS
@@ -75,7 +67,13 @@ cursor.execute(
 
 """
 )
-
+cursor.execute(
+    """DROP TABLE IF EXISTS profiles_previously_viewed CASCADE;
+        CREATE TABLE IF NOT EXISTS profiles_previously_viewed (
+            profiles_id varchar(9999) ,
+            products_ids varchar(9999));
+"""
+)
 
 
 connection.commit()

@@ -59,7 +59,7 @@ def get_all_products():
                 }
     return total
 
-def get_recommendations(products):
+def get_recommendations_products(products):
     recommendation = {}
     for prod_index, prod_items in products.items():
         category = prod_items.get('category')
@@ -93,7 +93,7 @@ def get_recommendations(products):
         recommendation[prod_index] = recommended
     return recommendation
 
-def make_csv(recommendations):
+def make_csv_prod_recs(recommendations):
     with open('soortgelijkeproducten.csv', 'w') as writable:
         names = ['products_id', 'products_id1', 'products_id2', 'products_id3', 'products_id4', 'products_id5']
         writer = csv.DictWriter(writable, fieldnames= names)
@@ -109,7 +109,7 @@ def make_csv(recommendations):
             )
 
 def producten_to_db():
-    make_csv(get_recommendations(get_all_products()))
+    make_csv_prod_recs(get_recommendations_products(get_all_products()))
     with open('soortgelijkeproducten.csv', 'r', encoding='utf8') as f:
         reader = csv.reader(f)
         next(reader)
