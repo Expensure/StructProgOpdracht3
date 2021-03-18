@@ -1,0 +1,14 @@
+This is an exercise of creating business rules
+
+The business rules are saved in your local database.
+
+you can find the business rules in the database by using a WHERE statement, and then including a variable.
+
+
+
+The first business rule, soortgelijke producten, selects products that are alike to the product that has been selected,
+This will be decided by looking at (sub)categories and brands.
+
+The second business rule, anderen kochten ook, selects products based on what other people have bought. 
+It checks if person one has also bought something that person two bought, 
+and then sends products that person two bought as recommendation to person one.
