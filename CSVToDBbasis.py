@@ -83,18 +83,16 @@ def writeProfilespreviouslyviewed():
     with open('profiles_previously_viewed.csv', 'r') as f:
         reader = csv.reader(f)
         next(reader)
-        x = 0
         for row in reader:
-            x+= 1
             cursor.execute(
                 """INSERT INTO profiles_previously_viewed (profiles_id,products_ids)
-                 VALUES (%s,%s) ON CONFLICT(profiles_id) DO NOTHING""", (
+                 VALUES (%s,%s) """, (
                     row[0], row[1]))
-            print(x)
-#writeProductsBrandsCategories()
-#writeProfiles()
-#writeSessions()
+writeProductsBrandsCategories()
+writeProfiles()
+writeSessions()
 connection.commit()
+print('Loading in PPV takes a long time, you can quit if you want.')
 writeProfilespreviouslyviewed()
 connection.commit()
 cursor.close()

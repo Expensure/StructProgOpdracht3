@@ -90,7 +90,6 @@ def get_recommendations_products(products):
             recommended = random.sample(recommendations_category, 5)
         else:
             recommended = random.sample(list(products.keys()), 5)
-        print(recommended)
         recommendation[prod_index] = recommended
     return recommendation
 
